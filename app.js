@@ -1,7 +1,9 @@
 import React from "react"
 import ReactDOM from "react-dom/client"
-const child1 = React.createElement("h1",{id:"child1"},"Child1")
-const child2 = React.createElement("h1",{id:"child2"},"Child2")
-const parent = React.createElement("div",{id:"parent"},[child1,child2])
+
+// const h1 = React.createElement("h1",{id:"h1"},"Hello Tarun Welcome")
+
+const h1 = <h1 id="h1">Hello tarun from jsx</h1> // This is jsx syntax to write code in html like syntsx
+
 const root = ReactDOM.createRoot(document.getElementById("root"))
-root.render(parent)
+root.render(h1)
