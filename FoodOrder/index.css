@@ -43,9 +43,25 @@ ul>li{
     display: flex;
     margin: 5px;
     justify-content: space-around;
+    flex-wrap: wrap;
 }
 .cart-container{
     margin-top: 15px;
     display: flex;
     flex-wrap: wrap;
+}
+.search{
+    margin: 10px;
+}
+.shimmer-container{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+.shimmer{
+    height: 200px;
+    width: 200px;
+    background-color: rgb(228, 228, 234);
+    padding: 2px;
+    margin: 5px;
 }

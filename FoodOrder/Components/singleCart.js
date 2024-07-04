@@ -6,7 +6,7 @@ const SingleCart = (props) => {
     <div className="cart">
         <div className="cart-image">
       <img
-        style={{ height: "200px", borderRadius: "15px", width:"200px" }}
+        style={{ height: "200px", borderRadius: "15px",width:"190px" }}
         src={RESTUARANT_IMAGE+cloudinaryImageId}    
       />
       </div>
@@ -15,7 +15,7 @@ const SingleCart = (props) => {
           <b>{name}</b>
         </div>
         <div>Rating : {avgRating} ⭐</div>
-        <div>Location : {locality}</div>
+        <div>Location : {locality?locality:'NA'}</div>
       </div>
     </div>
   );
