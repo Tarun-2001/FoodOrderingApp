@@ -3,6 +3,7 @@
     display: flex;
     justify-content: space-between;
     border: 2px solid black;
+    flex-wrap: wrap;
 }
 ul{
     display: flex;
@@ -11,6 +12,11 @@ ul{
 }
 ul>li{
     margin-right:15px ;
+}
+.logout{
+    margin-right:5px;
+    font-size: 20px;
+    width: 75px;
 }
 .nav-items{
     margin-right:50px;
@@ -50,8 +56,12 @@ ul>li{
     display: flex;
     flex-wrap: wrap;
 }
-.search{
+.filter{
     margin: 10px;
+}
+.filter-btn{
+    margin: 2px;
+    cursor: pointer;
 }
 .shimmer-container{
     display: flex;
