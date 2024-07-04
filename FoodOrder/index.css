@@ -23,16 +23,20 @@ ul>li{
 }
 .cart{
     height: auto; 
-    border: 2px solid black;
     width: 200px;
     word-wrap: break-word;
     text-align: left;
     padding: 2px;
     margin: 5px;
     justify-content: space-around;
+    border: 0.5 solid black;
+    background-color: rgb(240, 237, 244);
+}
+.cart:hover{
+   cursor: pointer;
 }
 .cart-details{
-    font-size: 20px;
+    font-size: 15px;
     margin: 5px 15px;
 }
 .cart-image{
