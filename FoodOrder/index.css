@@ -9,10 +9,17 @@ ul{
     display: flex;
     list-style:none;
     margin:5px ;
+    
 }
-ul>li{
+li{
     margin-right:15px ;
+    color: black; 
 }
+.link{
+    text-decoration: none;
+
+}
+
 .logout{
     margin-right:5px;
     font-size: 20px;
