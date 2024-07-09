@@ -1,45 +1,61 @@
-const express = require('express');
-const http = require('http');
+const express = require("express");
+const http = require("http");
 
 const routerSwiggy = express.Router();
 
-routerSwiggy.get('/restaurant', (req, res) => {
-  const options = {
-    hostname: 'www.swiggy.com',
-    path: '/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=17.37240&lng=78.43780&restaurantId=750389&catalog_qa=undefined&submitAction=ENTER',
-    method: 'GET'
-  };
-
-  const request = http.request(options, (response) => {
-    let data = '';
-
-    // A chunk of data has been received.
-    response.on('data', (chunk) => {
-      data += chunk;
-    });
-
-    // The whole response has been received.
-    response.on('end', () => {
-      if (response.statusCode === 200) {
-        try {
-          const responseObj = JSON.parse(data);
-          res.status(200).json({ responseObj });
-        } catch (error) {
-          res.status(500).json({ errorMessage: 'Error parsing JSON response', error });
-        }
-      } else {
-        res.status(response.statusCode).json({ errorMessage: `HTTP error! Status: ${response.statusCode}` });
+routerSwiggy.get("/restaurant", async (req, res) => {
+  try {
+    const response = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.37240&lng=78.43780&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING",
+      {
+        headers: {
+          "User-Agent":
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+        },
       }
-    });
-  });
-
-  // Handle request errors
-  request.on('error', (error) => {
-    console.error('Error fetching restaurant data:', error);
-    res.status(500).json({ errorMessage: 'Oops!!! Something Went Wrong....', error });
-  });
-
-  request.end();
+    );
+    const responseObj = await response.json();
+    res.status(200).json(responseObj);
+  } catch (error) {
+    console.log(error);
+  }
 });
+
+routerSwiggy.get("/getMorerestaurant", async (req, res) => {
+  try {
+    const response = await fetch(
+      "https://www.swiggy.com/api/seo/getListing?lat=17.425938120298223&lng=78.39342287825744",
+      {
+        headers: {
+          "User-Agent":
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+        },
+      }
+    );
+    const responseObj = await response.json();
+    res.status(200).json(responseObj);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+routerSwiggy.get("/restaurantMenu/:resId", async (req, res) => {
+  try {
+    const response = await fetch(
+      `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=17.37240&lng=78.43780&restaurantId=${req.params.resId}&catalog_qa=undefined&submitAction=ENTER`,
+      {
+        headers: {
+          "User-Agent":
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+        },
+      }
+    );
+    const responseObj = await response.json();
+    res.status(200).json(responseObj);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 
 module.exports = routerSwiggy;
