@@ -724,3 +724,11 @@ export const restaurantData = {
     },
   ],
 };
+
+export const restaurantMenu = [
+  "Chicken Biryani",
+  "Mini Chicken Biryani",
+  "Mini Mutton Biryani",
+  "Chicken Handi",
+  "Biryani [2 Pieces] (boiled Egg + 65)",
+];

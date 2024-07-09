@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import SingleCart from "./singleCart";
-import { fetchSwigyApi } from "../utils/fetchApiData";
 import ShimmerUi from "./ShimmerUI";
 import { useRestaurants } from "../utils/useRestaurants";
 import { Link } from "react-router-dom";

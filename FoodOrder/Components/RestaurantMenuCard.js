@@ -1,7 +1,6 @@
 import { useParams } from "react-router-dom";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 import ShimmerUi from "./ShimmerUI";
-import { useEffect, useState } from "react";
 
 const RestaurantMenuCard = (props) => {
   const { resId } = useParams();
@@ -11,7 +10,7 @@ const RestaurantMenuCard = (props) => {
 
   const { itemCards } =
     menuObj?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
-      ?.card
+      ?.card;
 
   const name = menuObj?.data?.cards[0]?.card?.card?.text;
 

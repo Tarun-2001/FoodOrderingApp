@@ -2,9 +2,10 @@ import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import AboutUs from "../Components/AboutUs";
 import BodyComponent from "../Components/Body";
-import ContactUs from "../Components/ContactUs";
+const ContactUs = lazy(()=>{return import("../Components/ContactUs")})
 import Error from "../Components/ErrorHandle";
 import RestaurantMenuCard from "../Components/RestaurantMenuCard";
+import { lazy, Suspense } from "react";
 
 export const router = createBrowserRouter([
   {
@@ -21,7 +22,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/contactUs",
-        element: <ContactUs />,
+        element: <Suspense fallback={<h1>Suspence fallback loading contact Us!!!</h1>}> <ContactUs /></Suspense>,
       },
       {
         path:'/restaurant/:resId',
