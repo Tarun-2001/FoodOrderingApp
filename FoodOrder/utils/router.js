@@ -4,6 +4,7 @@ import AboutUs from "../Components/AboutUs";
 import BodyComponent from "../Components/Body";
 import ContactUs from "../Components/ContactUs";
 import Error from "../Components/ErrorHandle";
+import RestaurantMenuCard from "../Components/RestaurantMenuCard";
 
 export const router = createBrowserRouter([
   {
@@ -22,7 +23,11 @@ export const router = createBrowserRouter([
         path: "/contactUs",
         element: <ContactUs />,
       },
+      {
+        path:'/restaurant/:resId',
+        element:<RestaurantMenuCard/>
+      }
     ],
     errorElement:<Error/>
-  },
+  }
 ]);

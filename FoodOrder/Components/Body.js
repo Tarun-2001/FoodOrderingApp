@@ -2,36 +2,35 @@ import React, { useState, useEffect } from "react";
 import SingleCart from "./singleCart";
 import { fetchSwigyApi } from "../utils/fetchApiData";
 import ShimmerUi from "./ShimmerUI";
+import { useRestaurants } from "../utils/useRestaurants";
+import { Link } from "react-router-dom";
 
 const BodyComponent = () => {
-  const [restaurant, setrestaurant] = useState([]);
-  const [filterRestaurant, setFilterRestaurant] = useState([]);
+  const restaurants = useRestaurants();
+  const [filterRestaurant, setFilterRestaurant] = useState(restaurants);
   const [searchRestaurant, setSearchRestaurant] = useState("");
 
-  const handleFilter = () => {
-    const res = restaurant.filter((resObj) => resObj.info.avgRating > 4);
-    setFilterRestaurant(res);
-  };
-
-  const clearFilters = () => {
-    setFilterRestaurant(restaurant);
-  };
-
-  const handleSearch = ()=>{
-    const searchResult = restaurant.filter((resObj)=>resObj.info.name.toLowerCase().includes(searchRestaurant.toLowerCase()))
-    setFilterRestaurant(searchResult)
-  }
   useEffect(() => {
-    handlePromise();
-  }, []);
-  const handlePromise = async () => {
-    // const fetchRestaurents = await fetch('https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.37240&lng=78.43780&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING')
-    // const res = await fetchRestaurents.json()
-    const res = await fetchSwigyApi(); // Calling mock data due to cors issue..
-    setrestaurant(res);
+    setFilterRestaurant(restaurants);
+  }, [restaurants]);
+
+  const handleFilter = () => {
+    const res = restaurants.filter((resObj) => resObj.info.avgRating > 4);
     setFilterRestaurant(res);
   };
-  return restaurant.length === 0 ? (
+
+  const clearFilters = async () => {
+    setFilterRestaurant(restaurants);
+  };
+
+  const handleSearch = () => {
+    const searchResult = restaurants.filter((resObj) =>
+      resObj.info.name.toLowerCase().includes(searchRestaurant.toLowerCase())
+    );
+    setFilterRestaurant(searchResult);
+  };
+
+  return restaurants.length === 0 ? (
     <ShimmerUi />
   ) : (
     <div className="body-container">
@@ -45,7 +44,9 @@ const BodyComponent = () => {
             setSearchRestaurant(e.target.value);
           }}
         />
-        <button className="filter-btn" onClick={handleSearch}>Search Restaurant</button>
+        <button className="filter-btn" onClick={handleSearch}>
+          Search Restaurant
+        </button>
         <button className="filter-btn" onClick={handleFilter}>
           Rating Above 4
         </button>
@@ -55,7 +56,9 @@ const BodyComponent = () => {
       </div>
       <div className="cart-container">
         {filterRestaurant.map((resObj) => (
-          <SingleCart key={resObj.info.id} resObj={resObj.info} />
+          <Link className="cart-container" to={`/restaurant/${resObj.info.id}`} key={resObj.info.id}>
+            <SingleCart resObj={resObj.info} />
+          </Link>
         ))}
       </div>
     </div>
