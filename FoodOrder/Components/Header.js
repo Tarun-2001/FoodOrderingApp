@@ -5,7 +5,7 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Header = () => {
   const [btnName, setBtnName] = useState("login");
-  const onlieStatus = useOnlineStatus()
+  const onlieStatus = useOnlineStatus();
   return (
     <div className="header">
       <div className="logo-container">
@@ -14,9 +14,7 @@ const Header = () => {
       <h1>Order Your Food</h1>
       <div className="nav-items">
         <ul className="list-container">
-        <Link className="link" to="/">
-            <li>Status {onlieStatus?"Online - 🟢":"Offline - 🔴"}</li>
-          </Link>
+          <li>Status {onlieStatus ? "Online - 🟢" : "Offline - 🔴"}</li>
           <Link className="link" to="/">
             <li>Home</li>
           </Link>
@@ -27,6 +25,7 @@ const Header = () => {
             <li>Contact Us</li>
           </Link>
           <li>Cart</li>
+          <Link className="link" to='/classComponent' > <li>ClassComponent</li> </Link>
           <button
             className="logout"
             onClick={() => {

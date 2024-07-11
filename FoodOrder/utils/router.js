@@ -6,6 +6,7 @@ const ContactUs = lazy(()=>{return import("../Components/ContactUs")})
 import Error from "../Components/ErrorHandle";
 import RestaurantMenuCard from "../Components/RestaurantMenuCard";
 import { lazy, Suspense } from "react";
+import ClassComponent from "../Components/classComponent";
 
 export const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ export const router = createBrowserRouter([
       {
         path:'/restaurant/:resId',
         element:<RestaurantMenuCard/>
+      },
+      {
+        path:'/classComponent',
+        element:<ClassComponent/>
       }
     ],
     errorElement:<Error/>
