@@ -3,12 +3,13 @@ import SingleCart from "./singleCart";
 import ShimmerUi from "./ShimmerUI";
 import { useRestaurants } from "../utils/useRestaurants";
 import { Link } from "react-router-dom";
+import Recommeded from "./Recommeded";
 
 const BodyComponent = () => {
   const restaurants = useRestaurants();
   const [filterRestaurant, setFilterRestaurant] = useState(restaurants);
   const [searchRestaurant, setSearchRestaurant] = useState("");
-
+  const RecommendedRestaurant = Recommeded(SingleCart)
   useEffect(() => {
     setFilterRestaurant(restaurants);
   }, [restaurants]);
@@ -56,7 +57,10 @@ const BodyComponent = () => {
       <div className="cart-container">
         {filterRestaurant.map((resObj) => (
           <Link className="cart-container" to={`/restaurant/${resObj.info.id}`} key={resObj.info.id}>
-            <SingleCart resObj={resObj.info} />
+            {
+              resObj.info.avgRating>4.2?
+                <RecommendedRestaurant resObj={resObj.info} />:<SingleCart resObj={resObj.info}/>
+            }
           </Link>
         ))}
       </div>
