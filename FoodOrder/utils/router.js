@@ -7,6 +7,7 @@ import Error from "../Components/ErrorHandle";
 import RestaurantMenuCard from "../Components/RestaurantMenuCard";
 import { lazy, Suspense } from "react";
 import ClassComponent from "../Components/classComponent";
+import DummyMenu from "./DummyMenu";
 
 export const router = createBrowserRouter([
   {
@@ -27,7 +28,8 @@ export const router = createBrowserRouter([
       },
       {
         path:'/restaurant/:resId',
-        element:<RestaurantMenuCard/>
+        element:<RestaurantMenuCard/>,
+        errorElement:<DummyMenu/>
       },
       {
         path:'/classComponent',
