@@ -1,32 +1,50 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 import ShimmerUi from "./ShimmerUI";
 import DummyMenu from "../utils/DummyMenu";
+import MenuItems from "./RestaurantMenu.js";
+import { dummyMenuItem } from "../utils/mockData.js";
 
 const RestaurantMenuCard = () => {
   const { resId } = useParams();
-  const menuObj = useRestaurantMenu(resId);
+  let menuObj = useRestaurantMenu(resId);
+  const [showItems, setShowItems] = useState(true);
+  const [showIndex, setShowIndex] = useState(null);
 
   if (menuObj === null) return <ShimmerUi />;
 
-  const {itemCards} = menuObj?.data?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.[2]?.card?.card
-  const name = menuObj?.data?.cards?.[0]?.card?.card?.text
-
-  if(itemCards===undefined||itemCards===null){
-    return <DummyMenu/>
+  const { itemCards } =
+    menuObj?.data?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.[2]
+      ?.card?.card;
+  if (itemCards === undefined || itemCards === null) {
+    menuObj = {...dummyMenuItem}
   }
+
+  const name = menuObj?.data?.cards?.[0]?.card?.card?.text;
+  const category =
+    menuObj.data.cards[4].groupedCard.cardGroupMap.REGULAR.cards.filter((c) => {
+      return (
+        c.card.card["@type"] ===
+        "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+      );
+    });
+  // console.log(category)
 
   return (
     <div>
-      <h1>{name} - Menu items!!!</h1>
-      <ul>
-        <li>
-          {itemCards.map((obj) => (
-            <li key={obj?.card?.info?.id}>{obj?.card?.info?.name}</li>
-          ))}
-        </li>
-      </ul>
+      <h1 style={{ "text-align": "center" }}>{name} - Menu items!!!</h1>
+      {category.map((ele, ind) => (
+        // Controlled Component
+        <MenuItems
+          key={ele.card.card.title}
+          data={ele}
+          showItems={true && ind === showIndex}
+          setShowIndex={() =>
+            ind === showIndex ? setShowIndex(null) : setShowIndex(ind)
+          }
+        />
+      ))}
     </div>
   );
 };

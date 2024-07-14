@@ -91,5 +91,33 @@ li{
     font-size: large;
     border-radius: 10%;
     padding-left: 4px;
+}
 
+.accordion{
+    width: 50%;
+    margin: auto;
+}
+.accordion-title{
+    display:flex ;
+    padding: 4px;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
+.accordian-body{
+    background-color: lightgray;
+}
+.accordion-item{
+    background-color: gray;
+    box-shadow: 5px 5px  5px rgb(187, 187, 187);
+    margin: 10px;
+}
+.list-items{
+    border-bottom: 0.5px solid black;
+    display: flex;
+    justify-content: space-between;
+}
+.list-items-image{
+    width: 100px;
+    height: 100px;
 }

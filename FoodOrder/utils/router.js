@@ -28,8 +28,7 @@ export const router = createBrowserRouter([
       },
       {
         path:'/restaurant/:resId',
-        element:<RestaurantMenuCard/>,
-        errorElement:<DummyMenu/>
+        element:<RestaurantMenuCard/>
       },
       {
         path:'/classComponent',
