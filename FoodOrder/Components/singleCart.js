@@ -19,7 +19,6 @@ const SingleCart = (props) => {
         </div>
         <div>Rating : {avgRating} ⭐</div>
         <div>Location : {locality?locality:'NA'}</div>
-        <div>{data.name}</div>
       </div>
     </div>
   );

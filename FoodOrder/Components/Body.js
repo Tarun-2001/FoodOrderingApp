@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import SingleCart from "./singleCart";
 import ShimmerUi from "./ShimmerUI";
 import { useRestaurants } from "../utils/CustomHooks/useRestaurants";
 import { Link } from "react-router-dom";
 import Recommeded from "./Recommeded";
+import { RestaurantApi } from "../utils/Context/RestaurantsApiContext";
 
 const BodyComponent = () => {
-  const restaurants = useRestaurants();
+  const {restaurants} = useContext(RestaurantApi);
   const [filterRestaurant, setFilterRestaurant] = useState(restaurants);
   const [searchRestaurant, setSearchRestaurant] = useState("");
   const RecommendedRestaurant = Recommeded(SingleCart)

@@ -30,7 +30,7 @@ const RestaurantMenuCard = () => {
 
   return (
     <div>
-      <h1 style={{ "text-align": "center" }}>{name} - Menu items!!!</h1>
+      <h1 style={{ textAlign: "center" }}>{name} - Menu items!!!</h1>
       {category.map((ele, ind) => (
         // Controlled Component
         <MenuItems
