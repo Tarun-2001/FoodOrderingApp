@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import useRestaurantMenu from "../utils/useRestaurantMenu";
+import useRestaurantMenu from "../utils/CustomHooks/useRestaurantMenu.js";
 import ShimmerUi from "./ShimmerUI";
-import DummyMenu from "../utils/DummyMenu";
 import MenuItems from "./RestaurantMenu.js";
 import { dummyMenuItem } from "../utils/mockData.js";
 
 const RestaurantMenuCard = () => {
   const { resId } = useParams();
   let menuObj = useRestaurantMenu(resId);
-  const [showItems, setShowItems] = useState(true);
   const [showIndex, setShowIndex] = useState(null);
 
   if (menuObj === null) return <ShimmerUi />;
@@ -29,7 +27,6 @@ const RestaurantMenuCard = () => {
         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
       );
     });
-  // console.log(category)
 
   return (
     <div>

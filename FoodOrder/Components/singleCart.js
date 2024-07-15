@@ -1,6 +1,9 @@
+import { useContext } from 'react';
 import {RESTUARANT_IMAGE} from '../utils/constants'
+import { UserContext } from '../utils/Context/UserContext';
 
 const SingleCart = (props) => {
+    const data = useContext(UserContext) 
     const {name,locality,avgRating,cloudinaryImageId} = props.resObj
    return (
     <div className="cart">
@@ -16,6 +19,7 @@ const SingleCart = (props) => {
         </div>
         <div>Rating : {avgRating} ⭐</div>
         <div>Location : {locality?locality:'NA'}</div>
+        <div>{data.name}</div>
       </div>
     </div>
   );

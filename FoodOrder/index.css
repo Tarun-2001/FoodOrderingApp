@@ -96,6 +96,7 @@ li{
 .accordion{
     width: 50%;
     margin: auto;
+    margin-bottom: 20px;
 }
 .accordion-title{
     display:flex ;
@@ -105,10 +106,10 @@ li{
     cursor: pointer;
 }
 .accordian-body{
-    background-color: lightgray;
+    background-color: rgb(236, 233, 233);
 }
 .accordion-item{
-    background-color: gray;
+    background-color: rgb(177, 175, 175);
     box-shadow: 5px 5px  5px rgb(187, 187, 187);
     margin: 10px;
 }
@@ -116,6 +117,7 @@ li{
     border-bottom: 0.5px solid black;
     display: flex;
     justify-content: space-between;
+    padding: 5px;
 }
 .list-items-image{
     width: 100px;

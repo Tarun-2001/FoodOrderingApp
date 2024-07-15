@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { LOGO_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
-import useOnlineStatus from "../utils/useOnlineStatus";
+import useOnlineStatus from "../utils/CustomHooks/useOnlineStatus";
+import { UserContext } from "../utils/Context/UserContext";
 
 const Header = () => {
   const [btnName, setBtnName] = useState("login");
   const onlieStatus = useOnlineStatus();
+  const loginData = useContext(UserContext);
   return (
     <div className="header">
       <div className="logo-container">
@@ -25,11 +27,20 @@ const Header = () => {
             <li>Contact Us</li>
           </Link>
           <li>Cart</li>
-          <Link className="link" to='/classComponent' > <li>ClassComponent</li> </Link>
+          <Link className="link" to="/classComponent">
+            {" "}
+            <li>ClassComponent</li>{" "}
+          </Link>
           <button
             className="logout"
             onClick={() => {
-              btnName === "login" ? setBtnName("logout") : setBtnName("login");
+              if (loginData.loginStatus) {
+                setBtnName("logout");
+                loginData.setLoginStatus(false);
+              } else {
+                setBtnName("login");
+                loginData.setLoginStatus(true);
+              }
             }}
           >
             {btnName}

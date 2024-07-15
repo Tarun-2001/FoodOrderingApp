@@ -12,7 +12,7 @@ const MenuItems = ({ items }) => {
             <div>
               <div>
                 <h3>
-                  {item.card?.info?.name} - ₹{item.card?.info?.price / 100}{" "}
+                  {item.card?.info?.name} - ₹{(item.card?.info?.price||4900) / 100}{" "}
                 </h3>
               </div>
               <div>

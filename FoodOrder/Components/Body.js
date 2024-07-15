@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import SingleCart from "./singleCart";
 import ShimmerUi from "./ShimmerUI";
-import { useRestaurants } from "../utils/useRestaurants";
+import { useRestaurants } from "../utils/CustomHooks/useRestaurants";
 import { Link } from "react-router-dom";
 import Recommeded from "./Recommeded";
 
@@ -58,6 +58,7 @@ const BodyComponent = () => {
         {filterRestaurant.map((resObj) => (
           <Link className="cart-container" to={`/restaurant/${resObj.info.id}`} key={resObj.info.id}>
             {
+              // Higher Order component - RecommendedRestaurant
               resObj.info.avgRating>4.2?
                 <RecommendedRestaurant resObj={resObj.info} />:<SingleCart resObj={resObj.info}/>
             }
