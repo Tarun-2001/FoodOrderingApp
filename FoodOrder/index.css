@@ -19,7 +19,11 @@ li{
     text-decoration: none;
 
 }
-
+.list-container{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
 .logout{
     margin-right:5px;
     font-size: 20px;
@@ -29,6 +33,7 @@ li{
     margin-right:50px;
     margin-top: 20px;
     font-size: 20px;
+    width: auto;
 }
 
 .logo{
@@ -36,9 +41,9 @@ li{
 }
 .cart{
     height: 100%; 
-    width: 200px;
+    width: 280px;
     word-wrap: break-word;
-    text-align: left;
+    text-align: center;
     padding: 2px;
     margin: 5px;
     justify-content: space-around;
@@ -59,11 +64,11 @@ li{
     flex-wrap: wrap;
 }
 .cart-container{
-    margin-top: 15px;
+    margin: 25px;
     display: flex;
     flex-wrap: wrap;
     text-decoration: none;
-    color:black
+    color:black;
 }
 .filter{
     margin: 10px;
@@ -120,6 +125,8 @@ li{
     padding: 5px;
 }
 .list-items-image{
+    position: relative;
+    bottom: 2px;
     width: 100px;
     height: 100px;
 }

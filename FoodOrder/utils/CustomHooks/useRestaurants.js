@@ -15,6 +15,10 @@ export const useRestaurants = () => {
     fetchMoreRestaurants = await fetchMoreRestaurants.json()
     fetchMoreRestaurants = fetchMoreRestaurants.data.success.cards[1].card.card.gridElements.infoWithStyle.restaurants
     restaurantArray = [...restaurantArray,...fetchMoreRestaurants]
+    let fetchMoreRestaurants2 = await fetch('http://localhost:3000/swiggy/update')
+    fetchMoreRestaurants2 = await fetchMoreRestaurants2.json()
+    fetchMoreRestaurants2 = fetchMoreRestaurants2.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
+    restaurantArray = [...restaurantArray,...fetchMoreRestaurants2]
     setRestaurants(restaurantArray);
   };
 
