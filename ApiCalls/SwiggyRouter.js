@@ -24,7 +24,7 @@ routerSwiggy.get("/restaurant", async (req, res) => {
 routerSwiggy.get("/getMorerestaurant", async (req, res) => {
   try {
     const response = await fetch(
-      "https://www.swiggy.com/api/seo/getListing?lat=17.425938120298223&lng=78.39342287825744",
+      "https://www.swiggy.com/api/seo/getListing?lat=12.971389&lng=77.750130",
       {
         headers: {
           "User-Agent":
@@ -57,5 +57,33 @@ routerSwiggy.get("/restaurantMenu/:resId", async (req, res) => {
   }
 });
 
+routerSwiggy.get("/update", async (req, res) => {
+  try {
+    let data = JSON.stringify({
+      lat: "18.3205",
+      lng: "78.3370",
+    });
 
+    let config = {
+      method: "post",
+      url: "https://www.swiggy.com/dapi/restaurants/list/update",
+      headers: {
+        "content-type": "application/json",
+        origin: "https://www.swiggy.com",
+        "user-agent":
+          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36 Edg/126.0.0.0",
+      },
+      data: data,
+    };
+    let resposnse = await fetch(config.url, {
+      method: "POST",
+      headers: config.headers,
+      body: data,
+    });
+    resposnse = await resposnse.json();
+    res.status(200).json(resposnse);
+  } catch (error) {
+    console.log(error);
+  }
+});
 module.exports = routerSwiggy;
