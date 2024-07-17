@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { LOGO_URL } from "../utils/constants";
+import { LOGO_URL } from "../utils/Constants/constants";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/CustomHooks/useOnlineStatus";
 import { UserContext } from "../utils/Context/UserContext";
@@ -26,7 +26,9 @@ const Header = () => {
           <Link className="link" to="/contactUs">
             <li>Contact Us</li>
           </Link>
-          <li>Cart</li>
+          <Link className="link" to="/cart">
+            <li>Cart</li>
+          </Link>
           <Link className="link" to="/classComponent">
             {" "}
             <li>ClassComponent</li>{" "}

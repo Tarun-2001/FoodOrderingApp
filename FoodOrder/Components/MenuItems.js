@@ -1,6 +1,6 @@
 import React from "react";
-import { RESTUARANT_IMAGE } from "../utils/constants";
-import { description } from "../utils/mockData";
+import { RESTUARANT_IMAGE } from "../utils/Constants/constants";
+import { description } from "../utils/MockData/mockData";
 const MenuItems = ({ items }) => {
     
   return (

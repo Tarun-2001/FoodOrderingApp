@@ -7,7 +7,8 @@ import Error from "../Components/ErrorHandle";
 import RestaurantMenuCard from "../Components/RestaurantMenuCard";
 import { lazy, Suspense } from "react";
 import ClassComponent from "../Components/classComponent";
-import DummyMenu from "./DummyMenu";
+import DummyMenu from "./MockData/DummyMenu";
+import Cart from "../Components/Cart";
 
 export const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
       {
         path:'/classComponent',
         element:<ClassComponent/>
+      },
+      {
+        path:'/cart',
+        element:<Cart/>
       }
     ],
     errorElement:<Error/>

@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import useRestaurantMenu from "../utils/CustomHooks/useRestaurantMenu.js";
 import ShimmerUi from "./ShimmerUI";
 import MenuItems from "./RestaurantMenu.js";
-import { dummyMenuItem } from "../utils/mockData.js";
+import { dummyMenuItem } from "../utils/MockData/mockData.js";
 
 const RestaurantMenuCard = () => {
   const { resId } = useParams();

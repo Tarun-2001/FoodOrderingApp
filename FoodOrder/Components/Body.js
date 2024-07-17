@@ -1,27 +1,27 @@
 import React, { useState, useEffect, useContext } from "react";
 import SingleCart from "./singleCart";
 import ShimmerUi from "./ShimmerUI";
-import { useRestaurants } from "../utils/CustomHooks/useRestaurants";
 import { Link } from "react-router-dom";
 import Recommeded from "./Recommeded";
 import { RestaurantApi } from "../utils/Context/RestaurantsApiContext";
 
 const BodyComponent = () => {
-  const {restaurants} = useContext(RestaurantApi);
+  const { restaurants } = useContext(RestaurantApi);
   const [filterRestaurant, setFilterRestaurant] = useState(restaurants);
   const [searchRestaurant, setSearchRestaurant] = useState("");
-  const RecommendedRestaurant = Recommeded(SingleCart)
+  const RecommendedRestaurant = Recommeded(SingleCart);
   useEffect(() => {
     setFilterRestaurant(restaurants);
   }, [restaurants]);
 
   const handleFilter = () => {
-    const res = restaurants.filter((resObj) => resObj.info.avgRating > 4);
+    const res = restaurants.filter((resObj) => resObj.info.avgRating > 4.2);
     setFilterRestaurant(res);
   };
 
   const clearFilters = async () => {
     setFilterRestaurant(restaurants);
+    setSearchRestaurant("");
   };
 
   const handleSearch = () => {
@@ -49,7 +49,7 @@ const BodyComponent = () => {
           Search Restaurant
         </button>
         <button className="filter-btn" onClick={handleFilter}>
-          Rating Above 4
+          Recommend Restaurants
         </button>
         <button className="filter-btn" onClick={clearFilters}>
           Clear All Filters
@@ -57,11 +57,18 @@ const BodyComponent = () => {
       </div>
       <div className="cart-container">
         {filterRestaurant.map((resObj) => (
-          <Link className="cart-container" to={`/restaurant/${resObj.info.id}`} key={resObj.info.id}>
+          <Link
+            className="cart-container"
+            to={`/restaurant/${resObj.info.id}`}
+            key={resObj.info.id}
+          >
             {
               // Higher Order component - RecommendedRestaurant
-              resObj.info.avgRating>4.2?
-                <RecommendedRestaurant resObj={resObj.info} />:<SingleCart resObj={resObj.info}/>
+              resObj.info.avgRating > 4.2 ? (
+                <RecommendedRestaurant resObj={resObj.info} />
+              ) : (
+                <SingleCart resObj={resObj.info} />
+              )
             }
           </Link>
         ))}

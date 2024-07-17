@@ -1,4 +1,4 @@
-import { restaurantData } from "./mockData"
+import { restaurantData } from "./MockData/mockData"
 
 export const fetchSwigyApi = async()=>{
   const delay = Math.floor(Math.random()*(1000-500+1)+500);

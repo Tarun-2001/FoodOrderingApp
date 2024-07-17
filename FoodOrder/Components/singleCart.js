@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import {RESTUARANT_IMAGE} from '../utils/constants'
+import {RESTUARANT_IMAGE} from '../utils/Constants/constants'
 import { UserContext } from '../utils/Context/UserContext';
 
 const SingleCart = (props) => {
