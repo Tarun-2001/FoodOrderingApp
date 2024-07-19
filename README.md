@@ -23,8 +23,8 @@ Clone the project
 ```
 
 Go to the project directory
-
 ```bash
+  Open the terminal in current directory 
   cd ApiCalls
 ```
 
@@ -44,7 +44,6 @@ Install dependencies in FoodOrder (Client) Folder
 Install dependencies in FoodOrderingApp Folder 
 ```bash
   cd ..
-  cd FoodOrderingApp/
   npm install
 ```
 Start the both Client and Server
