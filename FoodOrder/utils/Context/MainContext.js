@@ -1,9 +1,10 @@
 import React from "react";
 import { UserProvider } from "./UserContext";
 import { RestaurantApiProvider } from "./RestaurantsApiContext";
+import CartProvider from "./CartContext";
 
 const MainContext = (props) => {
-  const providers = [UserProvider, RestaurantApiProvider];
+  const providers = [UserProvider, RestaurantApiProvider, CartProvider];
 
   //   return (
   //     <UserProvider>

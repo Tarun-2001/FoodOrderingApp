@@ -130,3 +130,17 @@ li{
     width: 100px;
     height: 100px;
 }
+
+.card-items{  
+    border: 1px solid black;
+    margin-top: 10px;
+}
+.card-container{
+    width: 50%;
+    margin: auto 25%;
+    margin-top: 30px;
+}
+.card-title{
+    text-align: center;
+    margin-bottom: 30px;
+}

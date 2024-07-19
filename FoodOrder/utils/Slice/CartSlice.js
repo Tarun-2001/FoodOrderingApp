@@ -1,4 +1,7 @@
 import { createSlice, current } from "@reduxjs/toolkit";
+import { useContext } from "react";
+import { CartContext } from "../Context/CartContext";
+
 
 const cartSlice = createSlice({
   name: "cart",
@@ -8,11 +11,9 @@ const cartSlice = createSlice({
   reducers: {
     addtoCart: (state, action) => {
       state.items.push(action.payload);
-      console.log(current(state));
     },
     removeFromCart: (state, action) => {
-        state.items = state.items.filter((item) => item.card?.info?.id !== action.payload);
-        console.log(current(state));
+      state.items = state.items.filter((item) => item.card?.info?.id !== action.payload);    
     },
   },
 });
