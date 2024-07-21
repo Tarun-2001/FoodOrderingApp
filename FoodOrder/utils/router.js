@@ -21,11 +21,17 @@ export const router = createBrowserRouter([
       },
       {
         path: "/aboutUs",
-        element: <AboutUs />,
+        element: <AboutUs />
       },
       {
         path: "/contactUs",
         element: <Suspense fallback={<h1>Suspence fallback loading contact Us!!!</h1>}> <ContactUs /></Suspense>,
+        children:[
+          {
+            path:'/contactUs/ ',
+            element:<h1>This is children of contactUs component replacing outlet tag</h1>
+          }
+        ]
       },
       {
         path:'/restaurant/:resId',
