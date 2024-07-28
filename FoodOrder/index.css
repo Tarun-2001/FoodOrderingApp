@@ -41,7 +41,7 @@ li{
 }
 .cart{
     height: 100%; 
-    width: 280px;
+    width: 250px;
     word-wrap: break-word;
     text-align: center;
     padding: 2px;
@@ -64,7 +64,7 @@ li{
     flex-wrap: wrap;
 }
 .cart-container{
-    margin: 25px;
+    margin: 25px;   
     display: flex;
     flex-wrap: wrap;
     text-decoration: none;

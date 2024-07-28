@@ -3,14 +3,12 @@ import { LOGO_URL } from "../utils/Constants/constants";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/CustomHooks/useOnlineStatus";
 import { UserContext } from "../utils/Context/UserContext";
-import { useSelector } from "react-redux";
 import { CartContext } from "../utils/Context/CartContext";
 
 const Header = () => {
   const [btnName, setBtnName] = useState("login");
   const onlieStatus = useOnlineStatus();
   const loginData = useContext(UserContext);
-  const cartItems = useSelector((store)=>store.cart.items)
   const [cartLength,setCartLength] = useState(0)
   const {cartObject} = useContext(CartContext)
 

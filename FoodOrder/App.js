@@ -1,7 +1,5 @@
 import Header from "./Components/Header";
 import { Outlet } from "react-router-dom";
-import { UserProvider } from "./utils/Context/UserContext";
-import { RestaurantApiProvider } from "./utils/Context/RestaurantsApiContext";
 import MainContext from "./utils/Context/MainContext";
 import { Provider } from "react-redux";
 import cartStore from "./utils/Store/CartStore";
