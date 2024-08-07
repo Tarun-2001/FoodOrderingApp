@@ -1,6 +1,5 @@
 const express = require("express");
-const http = require("http");
-
+const fetch = require('node-fetch');
 const routerSwiggy = express.Router();
 
 routerSwiggy.get("/restaurant", async (req, res) => {
