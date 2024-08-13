@@ -1,8 +1,5 @@
-import { useDispatch, useSelector } from "react-redux";
-import { RESTUARANT_IMAGE } from "../utils/Constants/constants";
-import MenuItems from "./MenuItems";
+import { useSelector } from "react-redux";
 import SingleMenuItem from "./SingleMenuItem";
-import { current } from "@reduxjs/toolkit";
 
 const Cart = (props) => {
   const cartItems = useSelector((store) => store.cart.items);
